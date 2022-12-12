@@ -57,6 +57,9 @@ Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_exti.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim_ex.c \
+Drivers/stm32-ssd1306/ssd1306/ssd1306.c\
+Drivers/stm32-ssd1306/ssd1306/ssd1306_fonts.c\
+Drivers/stm32-ssd1306/ssd1306/ssd1306_tests.c\
 Core/Src/system_stm32g0xx.c  
 
 # ASM sources
@@ -118,7 +121,8 @@ C_INCLUDES =  \
 -IDrivers/STM32G0xx_HAL_Driver/Inc \
 -IDrivers/STM32G0xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32G0xx/Include \
--IDrivers/CMSIS/Include
+-IDrivers/CMSIS/Include \
+-IDrivers/stm32-ssd1306/ssd1306\
 
 
 # compile gcc flags
@@ -189,5 +193,8 @@ clean:
 # dependencies
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
+
+upload: 
+	st-flash write ./build/STM32G0SSD1309.bin 0x8000000
 
 # *** EOF ***
